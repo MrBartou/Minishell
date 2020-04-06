@@ -5,23 +5,19 @@
 ** my_strcat
 */
 
-#include "my.h"
+#include "lib.h"
 
-char    *my_strcat(char *dest, char *src)
+char *my_strcat(char *dest, char *src)
 {
-    int     i = 0;
-    int     count = 0;
-    char    *res;
+    int i = 0;
+    int count = 0;
+    char *res;
 
     res = malloc(sizeof(*res) * (my_strlen(dest) + my_strlen(src) + 1));
-    while (dest[i]) {
+    for (; dest[i]; i++)
         res[i] = dest[i];
-        i++;
-    }
-    while (src[count]) {
+    for (; src[count]; count++)
         res[i + count] = src[count];
-        count++;
-    }
     res[i + count] = '\0';
     return (res);
 }

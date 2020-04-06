@@ -16,6 +16,7 @@ SRC	=   my_putchar.c		\
 		my_strcat.c \
 		my_atoi.c \
 		my_put_nbr.c \
+		free_array.c \
 
 OBJ	=	$(SRC:.c=.o)
 

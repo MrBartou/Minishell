@@ -1,11 +1,11 @@
 /*
-** EPITECH PROJECT, 2019
-** CPE_pushswap_2019
+** EPITECH PROJECT, 2020
+** PSU_minishell2_2019 [WSL: Ubuntu-18.04]
 ** File description:
 ** my_put_nbr
 */
 
-#include "my.h"
+#include "lib.h"
 
 int	my_put_nbr(int nb)
 {

@@ -1,24 +1,21 @@
 /*
 ** EPITECH PROJECT, 2020
-** PSU_minishell1_2019 [WSL: Ubuntu-18.04]
+** PSU_minishell2_2019 [WSL: Ubuntu-18.04]
 ** File description:
 ** my_strcmp
 */
 
-#include "my.h"
+#include "lib.h"
 
 int my_strcmp(char *s1, char *s2)
 {
-    int i = 0;
-
-    while (s1) {
+    for (int i = 0; s1; i++) {
         if (s1[i] > s2[i])
             return (1);
         else if (s1[i] < s2[i])
             return (-1);
         if (s1[i] == '\0')
             return (0);
-        i++;
     }
-    return (-3);
+    return (0);
 }

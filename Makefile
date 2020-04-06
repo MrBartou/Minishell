@@ -44,6 +44,7 @@ SRC	=	$(SRCDIR)/builtins/cd.c	\
 		$(SRCDIR)/check_command.c	\
 		$(SRCDIR)/create_path.c	\
 		$(SRCDIR)/lunch.c	\
+		$(SRCDIR)/put_prompt.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

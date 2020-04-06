@@ -1,11 +1,11 @@
 /*
 ** EPITECH PROJECT, 2020
-** PSU_minishell1_2019 [WSL: Ubuntu-18.04]
+** PSU_minishell2_2019 [WSL: Ubuntu-18.04]
 ** File description:
 ** my_putchar
 */
 
-#include "my.h"
+#include "lib.h"
 
 void my_putchar(char c)
 {

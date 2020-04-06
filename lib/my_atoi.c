@@ -1,9 +1,11 @@
 /*
 ** EPITECH PROJECT, 2020
-** PSU_minishell1_2019 [WSL: Ubuntu-18.04]
+** PSU_minishell2_2019 [WSL: Ubuntu-18.04]
 ** File description:
 ** my_atoi
 */
+
+#include "lib.h"
 
 int is_num(char c)
 {
@@ -22,7 +24,7 @@ int my_atoi(char *str)
     int nbr = 0;
     int is_neg = 1;
 
-    while (*str) {
+    for (; *str; str++) {
         if (is_char(*str))
             return (-1);
         if (*str == '-') {
@@ -35,7 +37,6 @@ int my_atoi(char *str)
             str++;
         nbr = ((*str - '0') + nbr);
         nbr = nbr * 10;
-        str++;
     }
     return ((nbr * is_neg) / 10);
 }
