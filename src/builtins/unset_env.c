@@ -7,8 +7,8 @@
 
 #include "my.h"
 
-void unset_env(char **tab, char **env)
+char **unset_env(char **tab, char **env)
 {
     (void) tab;
-    (void) env;
+    return (env);
 }

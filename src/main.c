@@ -18,7 +18,7 @@ int main(__attribute__((unused)) int ac,
     for (size_t BUFFER_SIZE = 0; getline(&buffer, &BUFFER_SIZE, stdin) != -1;
         BUFFER_SIZE = 0) {
         tab = my_str_to_word_array(buffer);
-        check_command(tab, env);
+        check_command(tab, &env);
         free_array(tab);
         if (put_prompt()) {
             free_array(env);

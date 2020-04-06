@@ -32,7 +32,7 @@ TESTDIR	=	./tests
 
 #=========== SRC ==============#
 
-SRCTEST	=	$(TESTDIR)/ \
+SRCTEST	=
 
 MAIN	=	$(SRCDIR)/main.c
 
@@ -105,6 +105,7 @@ $(TEST_BIN)	:	set_rules $(OBJ_TEST) $(OBJ)
 			@$(CC) -o $(TEST_BIN) $(OBJ_TEST) $(OBJ) $(CFLAGS) $(LDFLAGS)
 
 tests_run	:	set_rules $(TEST_BIN)
+			@make tests_run -C ./lib/
 			@./$(TEST_BIN) && \
 			$(ECHO) $(GREEN) "[OK]"$(TEAL)"  Done : " $@ $(DEFAULT)  || \
 			$(ECHO) $(ERROR) "[ERROR]" $(YELLOW) $(BINNAME) $(DEFAULT)

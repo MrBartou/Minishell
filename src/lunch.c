@@ -7,25 +7,24 @@
 
 #include "my.h"
 
+static void lunch_if(char **tab, char **env, char **path, int k)
+{
+    if (k == my_strlen(path[k]))
+        if (execve(tab[0], tab, env) == -1)
+            perror(tab[0]);
+}
+
 void lunch(char **tab, char **env, char **path)
 {
     pid_t pid;
-    pid = fork();
-    int k = 0;
 
-    if (pid == 0) {
-        while (1) {
-            if (execve(my_strcat(path[k], tab[0]), tab, env) == -1)
-            if (k == my_strlen(path[k])) {
-                if (execve(tab[0], tab, env) == -1) {
-                    perror(tab[0]);
-                }
-            }
-            k++;
+    pid = fork();
+    if (pid == 0)
+        for (int k = 0; k <= my_strlen(path[k]) ; k++) {
+            execve(my_strcat(path[k], tab[0]), tab, env);
+            lunch_if(tab, env, path, k);
         }
-        exit(1);
-    } else {
+    else
         waitpid(pid, 0, WUNTRACED);
-    }
     kill(pid, SIGTERM);
 }

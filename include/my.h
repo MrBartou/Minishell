@@ -17,8 +17,7 @@ typedef struct all
 } all_t;
 
 // fonction
-int check_command(char **tab, char **env);
-int check_command2(char **tab, char **env);
+int check_command(char **tab, char ***env);
 void lunch(char **tab, char **env, char **enpv);
 char **create_path(char **env);
 
@@ -26,7 +25,7 @@ char **create_path(char **env);
 int cd(char **tab);
 char **set_env(char **tab, char **env);
 void read_env(char **env);
-void unset_env(char **tab, char **env);
+char **unset_env(char **tab, char **env);
 int sortie(char **tab);
 
 // prompt

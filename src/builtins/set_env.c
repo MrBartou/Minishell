@@ -16,11 +16,11 @@ char **set_env(char **tab, char **env)
         write(2, "No enought arguments\n", 21);
         return (0);
     } else {
-    for (; env[all.lenght] != NULL; all.lenght++);
-    tab[1] = my_strcat(tab[1], "=");
-    all.lenght = all.lenght + 1;
-    env[all.lenght] = malloc(sizeof(char *) * 2);
-    env[all.lenght] = my_strcat(tab[1], tab[2]);
-    return (env);
+        for (; env[all.lenght] != NULL; all.lenght++);
+        tab[1] = my_strcat(tab[1], "=");
+        all.lenght = all.lenght + 1;
+        env[all.lenght] = malloc(sizeof(char *) * 2);
+        env[all.lenght] = my_strcat(tab[1], tab[2]);
+        return (env);
     }
 }

@@ -7,32 +7,17 @@
 
 #include "my.h"
 
-char **create_path(char **env)
+static char **my_strtopath(char *env)
 {
-    char **path = {0};
-    int i = 0;
+    char **result = NULL;
 
-    path = malloc(sizeof(char *));
-    while (1) {
-        if (my_strncmp(env[i], "PATH", 4) == 0) {
-            break;
-        }
-        i++;
-    }
-    path = my_strtowordarray1(env[i]);
-    return (path);
-}
-
-char **my_strtowordarray1(char *env)
-{
-    char **result = {0};
-    int i = 0;
-    int j = 0;
-    int k = 0;
-
-    result = malloc(sizeof(char *) * my_strlen(env));
-    while (env[k] != '\0') {
-        result[k] = malloc(sizeof(char) * my_strlen(env));
+    result = malloc(sizeof(char *) * my_strlen(env) + 1);
+    if (!result)
+        return NULL;
+    for (int i = 0, j = 0, k = 0; env[k] != '\0'; j++, k++) {
+        result[k] = malloc(sizeof(char) * my_strlen(env) + 1);
+        if (!result[k])
+            return NULL;
         if (env[k] == ':') {
             result[i][j] = 47;
             result[i][j + 1] = '\0';
@@ -41,24 +26,15 @@ char **my_strtowordarray1(char *env)
             k++;
         }
         result[i][j] = env[k];
-        j++;
-        k++;
     }
+    result[my_strlen(env)] = NULL;
     return (result);
 }
 
-int my_strcmp1(char s1, char *s2)
+char **create_path(char **env)
 {
     int i = 0;
 
-    while (s1) {
-        if (s1 > s2[i])
-            return (1);
-        else if (s1 < s2[i])
-            return (-1);
-        if (s1 == '\0')
-            return (0);
-        i++;
-    }
-    return (-3);
+    for (; my_strncmp(env[i], "PATH", 4); i++);
+    return (my_strtopath(env[i]));
 }

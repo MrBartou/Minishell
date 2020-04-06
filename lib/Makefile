@@ -7,6 +7,10 @@
 
 RM	=	rm -f
 
+CC = gcc
+
+NAMETEST = units_test
+
 SRC	=   my_putchar.c		\
 		my_putstr.c		\
 		my_strlen.c		\
@@ -17,6 +21,10 @@ SRC	=   my_putchar.c		\
 		my_atoi.c \
 		my_put_nbr.c \
 		free_array.c \
+
+SRCSTEST	= 	tests/tests_lib_one.c \
+				tests/tests_lib_two.c \
+				tests/tests_lib_three.c \
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -35,6 +43,12 @@ clean:
 
 fclean:		clean
 		$(RM) $(EXEC)
+		$(RM) $(NAMETEST)
+
+tests_run: $(SRC) $(SRCSTEST) clean
+	$(CC) --coverage $(SRC) -lcriterion -lgcov $(SRCSTEST) -o $(NAMETEST) $(CFLAGS)
+	./$(NAMETEST)
+	gcovr
 
 re:		fclean all
 
