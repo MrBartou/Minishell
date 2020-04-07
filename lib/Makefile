@@ -25,6 +25,7 @@ SRC	=   my_putchar.c		\
 SRCSTEST	= 	tests/tests_lib_one.c \
 				tests/tests_lib_two.c \
 				tests/tests_lib_three.c \
+				tests/tests_lib_four.c \
 
 OBJ	=	$(SRC:.c=.o)
 

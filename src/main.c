@@ -12,6 +12,7 @@ int main(__attribute__((unused)) int ac,
 {
     char *buffer = '\0';
     char **tab = NULL;
+    char **cpenv = env;
 
     if (put_prompt())
         return EPITECH_ERROR;
@@ -21,10 +22,12 @@ int main(__attribute__((unused)) int ac,
         check_command(tab, &env);
         free_array(tab);
         if (put_prompt()) {
-            free_array(env);
+            env = free_array(env);
+            env = cpenv;
             return EPITECH_ERROR;
         }
     }
-    free_array(env);
+    env = free_array(env);
+    env = cpenv;
     return EXIT_SUCCESS;
 }

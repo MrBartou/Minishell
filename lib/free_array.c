@@ -7,11 +7,12 @@
 
 #include "lib.h"
 
-void free_array(char **array)
+char **free_array(char **array)
 {
     if (!array)
-        return;
+        return NULL;
     for (int count = 0; array[count] != NULL; count++)
         free(array[count]);
     free(array);
+    return NULL;
 }

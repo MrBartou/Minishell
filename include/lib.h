@@ -25,7 +25,7 @@ char **my_str_to_word_array(char *str);
 char *my_strcat(char *dest, char *src);
 int my_strncmp(char const *s1, char const *s2, int n);
 int my_atoi(char *str);
-void free_array(char **array);
+char **free_array(char **array);
 int	my_put_nbr(int nb);
 
 #endif /* !LIB_H_ */
