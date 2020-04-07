@@ -27,5 +27,11 @@ int my_strncmp(char const *s1, char const *s2, int n);
 int my_atoi(char *str);
 char **free_array(char **array);
 int	my_put_nbr(int nb);
+int is_charac(char c, int status);
+int coumpt(char *str);
+int len_of_word(char *str, int i);
+int is_char(char c);
+int is_num(char c);
+void redirect_all_stds(void);
 
 #endif /* !LIB_H_ */

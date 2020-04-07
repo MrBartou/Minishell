@@ -7,7 +7,7 @@
 
 #include "lib.h"
 
-static int is_charac(char c, int status)
+int is_charac(char c, int status)
 {
     if (status == 1)
         if (c >= 33 && c <= 126)
@@ -18,7 +18,7 @@ static int is_charac(char c, int status)
     return EXIT_SUCCESS;
 }
 
-static int coumpt(char *str)
+int coumpt(char *str)
 {
     int	count = 0;
 
@@ -28,7 +28,7 @@ static int coumpt(char *str)
     return (count);
 }
 
-static int len_of_word(char *str, int i)
+int len_of_word(char *str, int i)
 {
     for (; str[i] != '\0'; i++)
         if (is_charac(str[i], 1) != 1)

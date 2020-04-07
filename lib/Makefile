@@ -22,10 +22,16 @@ SRC	=   my_putchar.c		\
 		my_put_nbr.c \
 		free_array.c \
 
-SRCSTEST	= 	tests/tests_lib_one.c \
-				tests/tests_lib_two.c \
-				tests/tests_lib_three.c \
-				tests/tests_lib_four.c \
+SRCSTEST	= 	tests/tests_atoi.c \
+				tests/tests_put_nbr.c \
+				tests/tests_putchar.c \
+				tests/tests_putstr.c \
+				tests/tests_strcat.c \
+				tests/tests_strcmp.c \
+				tests/tests_strlen.c \
+				tests/tests_strncmp.c \
+				tests/tests_is_charac.c \
+				tests/tests_compt.c \
 
 OBJ	=	$(SRC:.c=.o)
 
