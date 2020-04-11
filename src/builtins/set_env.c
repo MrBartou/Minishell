@@ -14,7 +14,7 @@ char **set_env(char **tab, char **env)
     char *value;
 
     if (!tab[1] || !tab[2]) {
-        write(2, "Too many arguments", 18);
+        write(2, "Too many arguments\n", 19);
         return NULL;
     }
     for (; env[k] != NULL; k++);
