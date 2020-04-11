@@ -42,9 +42,10 @@ SRC	=	$(SRCDIR)/builtins/cd.c	\
 		$(SRCDIR)/builtins/sortie.c	\
 		$(SRCDIR)/builtins/unset_env.c	\
 		$(SRCDIR)/check_command.c	\
-		$(SRCDIR)/create_path.c	\
+		$(SRCDIR)/parsing/create_path.c	\
 		$(SRCDIR)/lunch.c	\
 		$(SRCDIR)/put_prompt.c	\
+		$(SRCDIR)/do_loop.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

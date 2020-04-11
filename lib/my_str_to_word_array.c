@@ -41,11 +41,29 @@ char **my_str_to_word_array(char *str)
     int	y = coumpt(str);
     char **result = malloc(sizeof(char *) * y + 1);
 
-    for (int a = 0, b = 0, c = 0; b < y; a++, b++){
+    for (int a = 0, b = 0, c = 0; b < y; a++, b++) {
         c = 0;
         result[b] = malloc(sizeof(char) * len_of_word(str, a));
         for (; str[a] == ' ' || str[a] == '\t'; a++);
         for (; str[a] != '\0' && is_charac(str[a], 1) == 1; a++, c++)
+            result[b][c] = str[a];
+        result[b][c] = '\0';
+    }
+    result[y] = NULL;
+    return (result);
+}
+
+char **str_to_commat(char *str, char pivot)
+{
+    int	y = coumpt(str);
+    char **result = malloc(sizeof(char *) * y + 1);
+
+    for (int count = 0; count <= y ; count++)
+        result[count] = NULL;
+    for (int a = 0, b = 0, c = 0; b < y; a++, b++) {
+        c = 0;
+        result[b] = malloc(sizeof(char) * len_of_word(str, a));
+        for (; str[a] != '\0' && str[a] != pivot; a++, c++)
             result[b][c] = str[a];
         result[b][c] = '\0';
     }

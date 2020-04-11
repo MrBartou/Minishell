@@ -17,9 +17,9 @@ typedef struct all
 } all_t;
 
 // fonction
-int check_command(char **tab, char ***env);
+char **check_command(char **tab, char **env);
 void lunch(char **tab, char **env, char **enpv);
-char **create_path(char **env);
+int do_loop(char *buffer, char ***env);
 
 // builtins
 int cd(char **tab);
@@ -30,5 +30,9 @@ int sortie(char **tab);
 
 // prompt
 int put_prompt(void);
+
+// parsing
+char **create_path(char **env);
+char **str_to_commat(char *str, char pivot);
 
 #endif /* _MY_H_ */
