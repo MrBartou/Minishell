@@ -10,7 +10,7 @@
 
 Test(my_strncmp, return_strncmp_one)
 {
-    cr_assert_eq(my_strncmp("test", "test", 0), 0);
+    cr_assert_eq(my_strncmp("test", "test", 0), -1);
 }
 
 Test(my_strncmp, return_strncmp_two)
