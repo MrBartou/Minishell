@@ -25,11 +25,11 @@ static char **check_command2(char **tab, char **env)
 
 char **check_command(char **tab, char **env)
 {
-    if (my_strcmp(tab[0], "setenv") == 0)
-        return (set_env(tab, env));
-    if (my_strcmp(tab[0], "cd" ) == 0) {
-        cd(tab);
+    if (my_strcmp(tab[0], "setenv") == 0) {
+        env = set_env(tab, env);
         return env;
     }
+    if (my_strcmp(tab[0], "cd" ) == 0)
+        cd(tab, env);
     return check_command2(tab, env);
 }

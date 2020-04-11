@@ -12,19 +12,21 @@ int main(__attribute__((unused)) int ac,
 {
     char *buffer = '\0';
     char **cpenv = env;
+    int quit = 0;
 
     if (put_prompt())
         return EPITECH_ERROR;
     for (size_t BUFFER_SIZE = 0; getline(&buffer, &BUFFER_SIZE, stdin) != -1;
         BUFFER_SIZE = 0) {
-        do_loop(buffer, &env);
+        quit = do_loop(buffer, &env);
+        if (quit >= 0)
+            return (quit);
         if (put_prompt()) {
-            env = free_array(env);
             env = cpenv;
             return EPITECH_ERROR;
         }
     }
-    env = free_array(env);
     env = cpenv;
+    my_putstr("exit\n");
     return EXIT_SUCCESS;
 }

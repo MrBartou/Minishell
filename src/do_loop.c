@@ -21,5 +21,5 @@ int do_loop(char *buffer, char ***env)
         tab = free_array(tab);
     }
     free_array(array);
-    return (0);
+    return (-1);
 }

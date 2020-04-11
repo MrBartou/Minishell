@@ -7,43 +7,48 @@
 
 #include "my.h"
 
-int cd(char **tab)
+char **cd(char **tab, char **env)
 {
     int error;
+    char *old;
 
+    if (my_strcmp(tab[1], "-") == 0) {
+        old = recup_oldpwd(env);
+        chdir(old);
+        return env;
+    }
     if (tab[1] == NULL) {
         chdir("/home/");
-        return (0);
-    } else
+        return env;
+    }
+    if (tab[1] != NULL) {
         error = chdir(tab[1]);
+        return env;
+    }
     if (error != 0) {
         perror("cd");
-    } else {
-        return (0);
     }
-    return (0);
+    return env;
 }
 
-char **create_home(char **env)
+char *recup_oldpwd(char **env)
 {
-    char **path = {0};
-    int i = 0;
-    int k = 0;
-    int j = 0;
+    char *old = NULL;
+    char *temp = NULL;
+    int count2 = 1;
 
-    path = malloc(sizeof(char *));
-    while (1) {
-        if (my_strncmp(env[i], "OLDPWD", 6) == 0) {
-            break;
+    old = malloc(sizeof(char) * 100);
+    temp = malloc(sizeof(char) * 100);
+    temp[0] = 47;
+    for (int count = 0; env[count] != NULL; count++) {
+        if (my_strncmp(env[count], "OLDPWD", 6) == 0) {
+            old = env[count];
         }
-        i++;
     }
-    path[0] = my_strcat(env[i], env[i]);
-    for (k = 7; k != (my_strlen(path[0]) - 1); k++) {
-        path[1][j] = path[0][k];
-        my_putstr("aaa");
-        j++;
-    }
-    my_putstr(path[1]);
-    return (path);
+    for (int count1 = 0; old[count1] != '\0'; count1++)
+        if (old[count1] >= 'a' && old[count1] <= 'z') {
+            temp[count2] = old[count1];
+            count2++;
+        }
+    return (temp);
 }

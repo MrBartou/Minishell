@@ -9,11 +9,8 @@
 
 void read_env(char **env)
 {
-    all_t all;
-
-    for (; env[all.lenght] != NULL; all.lenght++);
-    for (int i = 0; i != all.lenght; i++) {
-        my_putstr(env[i]);
+    for (int count = 0; env[count] != NULL; count++) {
+        my_putstr(env[count]);
         my_putchar('\n');
     }
 }

@@ -16,5 +16,6 @@ int sortie(char **tab)
     }
     quit = my_atoi(tab[1]);
     quit = quit % 256;
-    exit(quit);
+    my_putstr("exit\n");
+    return (quit);
 }

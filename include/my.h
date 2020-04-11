@@ -22,11 +22,12 @@ void lunch(char **tab, char **env, char **enpv);
 int do_loop(char *buffer, char ***env);
 
 // builtins
-int cd(char **tab);
+char **cd(char **tab, char **env);
 char **set_env(char **tab, char **env);
 void read_env(char **env);
 char **unset_env(char **tab, char **env);
 int sortie(char **tab);
+char *recup_oldpwd(char **env);
 
 // prompt
 int put_prompt(void);

@@ -26,6 +26,5 @@ char **set_env(char **tab, char **env)
     newenv = env;
     newenv[k] = value;
     newenv[k + 1] = NULL;
-    free(value);
     return (newenv);
 }
