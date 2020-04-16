@@ -9,7 +9,7 @@
 
 char **cd(char **tab, char **env)
 {
-    int error;
+    int error = 0;
     char *old;
 
     if (my_strcmp(tab[1], "-") == 0) {

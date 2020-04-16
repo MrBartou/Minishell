@@ -26,5 +26,4 @@ void lunch(char **tab, char **env, char **path)
         }
     else
         waitpid(pid, 0, WUNTRACED);
-    kill(pid, SIGTERM);
 }
