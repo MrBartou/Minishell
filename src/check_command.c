@@ -30,6 +30,6 @@ char **check_command(char **tab, char **env)
         return env;
     }
     if (my_strcmp(tab[0], "cd" ) == 0)
-        cd(tab, env);
+        return cd(tab, env);
     return check_command2(tab, env);
 }

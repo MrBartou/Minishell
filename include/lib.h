@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #ifndef LIB_H_
 #define LIB_H_
