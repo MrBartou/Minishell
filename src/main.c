@@ -36,6 +36,5 @@ int main(__attribute__((unused)) int ac,
         }
     }
     env = cpenv;
-    my_putstr("exit\n");
     return EXIT_SUCCESS;
 }

@@ -12,11 +12,9 @@ int sortie(char **tab)
     int quit = 0;
 
     if (tab[1] == NULL) {
-        my_putstr("exit\n");
         return (quit);
     }
     quit = my_atoi(tab[1]);
     quit = quit % 256;
-    my_putstr("exit\n");
     return (quit);
 }
