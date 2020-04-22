@@ -26,6 +26,7 @@ int main(__attribute__((unused)) int ac,
     signal(SIGINT, msg_ctrl);
     for (size_t BUFFER_SIZE = 0; getline(&buffer, &BUFFER_SIZE, stdin) != -1;
         BUFFER_SIZE = 0) {
+        my_putchar('\n');
         quit = do_loop(buffer, &env);
         if (quit >= 0)
             return (quit);
