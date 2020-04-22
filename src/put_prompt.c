@@ -9,13 +9,6 @@
 
 int put_prompt(void)
 {
-    char *s = '\0';
-
-    s = malloc(sizeof(char) * 100);
-    if (!s)
-        return EXIT_FAILURE;
-    my_putstr(getcwd(s, 100));
-    my_putstr(" $> ");
-    free(s);
+    my_putstr("$> ");
     return EXIT_SUCCESS;
 }
