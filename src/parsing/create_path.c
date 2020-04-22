@@ -15,7 +15,7 @@ static char **my_strtopath(char *env)
     result = malloc(sizeof(char *) * my_strlen(env) + 1);
     for (int k = 5; env[k] != '\0'; j++, k++) {
         result[k - 5] = malloc(sizeof(char) * my_strlen(env) + 1);
-        if (!result[k - 5])
+        if (result[k - 5] == NULL)
             return NULL;
         if (env[k] == ':') {
             result[i][j] = 47;

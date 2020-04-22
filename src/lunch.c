@@ -11,13 +11,17 @@ void lunch(char **tab, char **env)
 {
     pid_t pid;
     char **path = NULL;
+    int error = 0;
 
     pid = fork();
     path = create_path(env);
     if (pid == 0)
-        for (int k = 0; k <= my_strlen(path[k]) ; k++) {
-            execve(my_strcat(path[k], tab[0]), tab, env);
-        }
+        for (int k = 0; k <= my_strlen(path[k]) ; k++)
+            error = execve(my_strcat(path[k], tab[0]), tab, env) == -1;
     else
         waitpid(pid, 0, WUNTRACED);
+    if (error != 0)
+        perror(tab[0]);
+    else
+        kill (pid, SIGKILL);
 }
