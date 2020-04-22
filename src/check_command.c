@@ -16,8 +16,7 @@ static char **check_command2(char **tab, char **env)
     else if (my_strcmp(tab[0], "env") == 0)
         read_env(env);
     else {
-        envp = create_path(env);
-        lunch(tab, env, envp);
+        lunch(tab, env);
         free_array(envp);
     }
     return (env);

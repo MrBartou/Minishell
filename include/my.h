@@ -18,7 +18,7 @@ typedef struct all
 
 // fonction
 char **check_command(char **tab, char **env);
-void lunch(char **tab, char **env, char **enpv);
+void lunch(char **tab, char **env);
 int do_loop(char *buffer, char ***env);
 
 // builtins
