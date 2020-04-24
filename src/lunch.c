@@ -7,6 +7,17 @@
 
 #include "my.h"
 
+static int lunch_if(char **tab, char **env, char **path, int k)
+{
+    int error = 0;
+
+    if (k == my_strlen(path[k])) {
+        error = execve(tab[0], tab, env);
+        return (error);
+    }
+    return (error);
+}
+
 void lunch(char **tab, char **env)
 {
     pid_t pid;
@@ -16,9 +27,10 @@ void lunch(char **tab, char **env)
     pid = fork();
     path = create_path(env);
     if (pid == 0)
-        for (int k = 0; k <= my_strlen(path[k]) ; k++)
-            error = execve(my_strcat(path[k], tab[0]), tab, env) == -1;
-    else
+        for (int k = 0; k <= my_strlen(path[k]) ; k++) {
+            error = execve(my_strcat(path[k], tab[0]), tab, env);
+            lunch_if(tab, env, path, k);
+    } else
         waitpid(pid, 0, WUNTRACED);
     if (error != 0)
         perror(tab[0]);

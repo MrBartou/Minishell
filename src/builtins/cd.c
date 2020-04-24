@@ -7,48 +7,55 @@
 
 #include "my.h"
 
+static char *my_strtooldpath(char *env)
+{
+    char **result = NULL;
+    int i = 0, j = 0;
+
+    result = malloc(sizeof(char *) * my_strlen(env) + 1);
+    for (int k = 7; env[k] != '\0'; j++, k++) {
+        result[k - 7] = malloc(sizeof(char) * my_strlen(env) + 1);
+        if (result[k - 7] == NULL)
+            return NULL;
+        if (env[k] == ':') {
+            result[i][j] = 47;
+            result[i][j + 1] = '\0';
+            i = i + 1;
+            j = 0;
+            k++;
+        }
+        result[i][j] = env[k];
+    }
+    result[i][j] = 47;
+    result[my_strlen(env)] = NULL;
+    return (result[0]);
+}
+
+char *create_oldpath(char **env)
+{
+    int i = 0;
+
+    for (; my_strncmp(env[i], "OLDPWD", 6); i++);
+    return (my_strtooldpath(env[i]));
+}
+
 char **cd(char **tab, char **env)
 {
     int error = 0;
     char *old;
 
     if (my_strcmp(tab[1], "-") == 0) {
-        old = recup_oldpwd(env);
+        old = create_oldpath(env);
         chdir(old);
         return env;
     }
     if (tab[1] == NULL) {
         chdir("/home/");
-        return env;
     }
     if (tab[1] != NULL) {
         error = chdir(tab[1]);
-        return env;
     }
-    if (error != 0) {
-        perror("cd");
-    }
+    if (error != 0)
+        perror(tab[1]);
     return env;
-}
-
-char *recup_oldpwd(char **env)
-{
-    char *old = NULL;
-    char *temp = NULL;
-    int count2 = 1;
-
-    old = malloc(sizeof(char) * 100);
-    temp = malloc(sizeof(char) * 100);
-    temp[0] = 47;
-    for (int count = 0; env[count] != NULL; count++) {
-        if (my_strncmp(env[count], "OLDPWD", 6) == 0) {
-            old = env[count];
-        }
-    }
-    for (int count1 = 0; old[count1] != '\0'; count1++)
-        if (old[count1] >= 'a' && old[count1] <= 'z') {
-            temp[count2] = old[count1];
-            count2++;
-        }
-    return (temp);
 }
