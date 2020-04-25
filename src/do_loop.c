@@ -18,7 +18,6 @@ int do_loop(char *buffer, char ***env)
         if (!my_strcmp(tab[0], "exit"))
             return (sortie(tab));
         *env = check_command(tab, *env);
-        tab = free_array(tab);
     }
     free_array(array);
     return (-1);

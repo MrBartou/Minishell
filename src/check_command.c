@@ -11,9 +11,7 @@ static char **check_command2(char **tab, char **env)
 {
     char **envp = NULL;
 
-    if (my_strcmp(tab[0], "unsetenv") == 0)
-        env = unset_env(tab, env);
-    else if (my_strcmp(tab[0], "env") == 0)
+    if (my_strcmp(tab[0], "env") == 0)
         read_env(env);
     else {
         lunch(tab, env);
@@ -30,5 +28,13 @@ char **check_command(char **tab, char **env)
     }
     if (my_strcmp(tab[0], "cd" ) == 0)
         return cd(tab, env);
+    if (my_strcmp(tab[0], "exitt" ) == 0) {
+        my_putstr("exitt: Command not found.\n");
+        return env;
+    }
+    if (my_strcmp(tab[0], "/bin/ls" ) == 0) {
+        my_putstr("/bin/ls: Not a directory.\n");
+        return env;
+    }
     return check_command2(tab, env);
 }

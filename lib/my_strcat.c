@@ -11,9 +11,11 @@ char *my_strcat(char *dest, char *src)
 {
     int i = 0;
     int count = 0;
-    char *res;
+    char *res = NULL;
 
     res = malloc(sizeof(*res) * (my_strlen(dest) + my_strlen(src) + 1));
+    if (res == NULL)
+        return NULL;
     for (; dest[i]; i++)
         res[i] = dest[i];
     for (; src[count]; count++)

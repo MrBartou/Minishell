@@ -39,12 +39,17 @@ int len_of_word(char *str, int i)
 char **my_str_to_word_array(char *str)
 {
     int	y = coumpt(str);
-    char **result = malloc(sizeof(char *) * y + 1);
+    char **result = NULL;
 
+    result = malloc(sizeof(char *) * y + 1);
+    if (result == NULL)
+        return NULL;
     for (int a = 0, b = 0, c = 0; b < y; a++, b++) {
         c = 0;
         result[b] = malloc(sizeof(char) * len_of_word(str, a));
-        for (; str[a] == ' ' || str[a] == '\t'; a++);
+        if (result == NULL)
+            return NULL;
+        for (; str[a] == ' ' || str[a] == '\t' || str[a] == ';'; a++);
         for (; str[a] != '\0' && is_charac(str[a], 1) == 1; a++, c++)
             result[b][c] = str[a];
         result[b][c] = '\0';
@@ -55,14 +60,19 @@ char **my_str_to_word_array(char *str)
 
 char **str_to_commat(char *str, char pivot)
 {
-    int	y = coumpt(str);
-    char **result = malloc(sizeof(char *) * y + 1);
+    int	y = my_strlen(str);
+    char **result = NULL;
 
+    result = malloc(sizeof(char *) * y + 1);
+    if (result == NULL)
+        return NULL;
     for (int count = 0; count <= y ; count++)
         result[count] = NULL;
     for (int a = 0, b = 0, c = 0; b < y; a++, b++) {
         c = 0;
         result[b] = malloc(sizeof(char) * len_of_word(str, a));
+        if (result == NULL)
+            return NULL;
         for (; str[a] != '\0' && str[a] != pivot; a++, c++)
             result[b][c] = str[a];
         result[b][c] = '\0';

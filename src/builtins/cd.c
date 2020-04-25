@@ -42,13 +42,7 @@ char *create_oldpath(char **env)
 char **cd(char **tab, char **env)
 {
     int error = 0;
-    char *old;
 
-    if (my_strcmp(tab[1], "-") == 0) {
-        old = create_oldpath(env);
-        chdir(old);
-        return env;
-    }
     if (tab[1] == NULL) {
         chdir("/home/");
     }
