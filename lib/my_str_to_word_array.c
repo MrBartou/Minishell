@@ -49,7 +49,7 @@ char **my_str_to_word_array(char *str)
         result[b] = malloc(sizeof(char) * len_of_word(str, a));
         if (result == NULL)
             return NULL;
-        for (; str[a] == ' ' || str[a] == '\t' || str[a] == ';'; a++);
+        for (; str[a] == ' ' || str[a] == '\t'; a++);
         for (; str[a] != '\0' && is_charac(str[a], 1) == 1; a++, c++)
             result[b][c] = str[a];
         result[b][c] = '\0';
@@ -70,10 +70,10 @@ char **str_to_commat(char *str, char pivot)
         result[count] = NULL;
     for (int a = 0, b = 0, c = 0; b < y; a++, b++) {
         c = 0;
-        result[b] = malloc(sizeof(char) * len_of_word(str, a));
+        result[b] = malloc(sizeof(char) * y);
         if (result == NULL)
             return NULL;
-        for (; str[a] != '\0' && str[a] != pivot; a++, c++)
+        for (; str[a] != '\0' && str[a] != pivot ; a++, c++)
             result[b][c] = str[a];
         result[b][c] = '\0';
     }
